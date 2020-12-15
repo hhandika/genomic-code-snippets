@@ -1,3 +1,3 @@
 #!/bin/bash
 
-parallel "echo {}; zcat {} | awk 'END {print NR/4}';" ::: sequences/*.gz
+parallel --result read_counts.csv "echo {}; zcat {} | awk 'END {print NR/4}';" ::: *.gz
