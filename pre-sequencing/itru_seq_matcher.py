@@ -14,11 +14,11 @@ import pandas as pd
 
 
 class IO:
-    def __init__(self, path, filenames) -> None:
+    def __init__(self, path: str, filenames: str) -> None:
         self.path = path
         self.filenames = filenames
 
-    def _get_path(self, filenames, new_path=None) -> str:
+    def _get_path(self, filenames: str, new_path=None) -> str:
         if new_path is not None:
             return new_path + '/' + filenames
         else:
@@ -32,11 +32,11 @@ class IO:
         df = pd.read_csv(csv_file)
         return df
     
-    def _write_file(self, df, path) -> None:
+    def _write_file(self, df: pd.DataFrame, path: str) -> None:
         df.to_csv(path, index=False)
         print(f'File is saved as {path}.') 
 
-    def write_csv(self,  df, new_path=None) -> None:
+    def write_csv(self,  df: pd.DataFrame, new_path=None) -> None:
         """
         Save pandas's dataframe to csv.
         """
@@ -55,7 +55,10 @@ class IO:
                  
 
 class Matcher:
-    def __init__(self, sample_i5, itru5, sample_i7, itru7) -> None:
+    def __init__(self, sample_i5: pd.DataFrame, \
+                itru5: pd.DataFrame, \
+                sample_i7: pd.DataFrame, \
+                itru7: pd.DataFrame) -> None:
         self.sample_i5 = sample_i5
         self.sample_i7 = sample_i7
         self.itru5 = itru5
