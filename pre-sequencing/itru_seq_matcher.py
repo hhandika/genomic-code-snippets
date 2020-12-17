@@ -18,13 +18,13 @@ class IO:
         self.path = path
         self.filenames = filenames
 
-    def _get_path(self, filenames, new_path=None):
+    def _get_path(self, filenames, new_path=None) -> str:
         if new_path is not None:
             return new_path + '/' + filenames
         else:
             return self.path + '/' + filenames
 
-    def read_csv(self):
+    def read_csv(self) -> pd.DataFrame:
         """
         
         """
@@ -36,7 +36,7 @@ class IO:
         df.to_csv(path, index=False)
         print(f'File is saved as {path}.') 
 
-    def write_csv(self,  df, new_path=None):
+    def write_csv(self,  df, new_path=None) -> None:
         """
         Save pandas's dataframe to csv.
         """
@@ -55,19 +55,19 @@ class IO:
                  
 
 class Matcher:
-    def __init__(self, sample_i5, itru5, sample_i7, itru7):
+    def __init__(self, sample_i5, itru5, sample_i7, itru7) -> None:
         self.sample_i5 = sample_i5
         self.sample_i7 = sample_i7
         self.itru5 = itru5
         self.itru7 = itru7
 
-    def _match_i5(self):
+    def _match_i5(self) -> pd.DataFrame:
         return self.sample_i5.merge(self.itru5, on='i5', how='left')
 
-    def _match_i7(self):
+    def _match_i7(self) -> pd.DataFrame:
         return self.sample_i7.merge(self.itru7, on='i7', how='left')
 
-    def match_all(self):
+    def match_all(self) -> pd.DataFrame:
         matched_i5 = self._match_i5()
         matched_i7 = self._match_i7()
         return matched_i5.merge(matched_i7, on='TubeNo', how='left')
