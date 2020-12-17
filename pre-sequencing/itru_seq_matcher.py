@@ -18,7 +18,7 @@ class IO:
         self.path = path
         self.filenames = filenames
 
-    def _get_path(self, filenames: str, new_path=None) -> str:
+    def _get_path(self, filenames: str, new_path: str=None) -> str:
         if new_path is not None:
             return new_path + '/' + filenames
         else:
@@ -36,7 +36,7 @@ class IO:
         df.to_csv(path, index=False)
         print(f'File is saved as {path}.') 
 
-    def write_csv(self,  df: pd.DataFrame, new_path=None) -> None:
+    def write_csv(self,  df: pd.DataFrame, new_path: str=None) -> None:
         """
         Save pandas's dataframe to csv.
         """
