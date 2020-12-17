@@ -28,10 +28,13 @@ class IO:
 
     def read_csv(self) -> pd.DataFrame:
         """
-        
+        Read csv file from user defined path.
+        Then, trim whitespace before returning
+        the data frame.
         """
         csv_file = self._get_path(self.filenames)
         df = pd.read_csv(csv_file)
+        df = df.apply(lambda x: x.str.strip() if x.dtype == 'object' else x)
         return df
     
     def _write_file(self, df: pd.DataFrame, path: str) -> None:
@@ -84,14 +87,13 @@ class Matcher:
 def main():
     fpath = 'data'
     sample_i5 = IO(fpath, 'sample.csv').read_csv()
-    # sample_i7 = IO(fpath, 'samplei7.csv').read_csv()
-    itru5 = IO(fpath, 'i5Index.csv').read_csv()
-    itru7 = IO(fpath, 'i7Index.csv').read_csv()
+    itru5 = IO(fpath, 'i5seq.csv').read_csv()
+    itru7 = IO(fpath, 'i7seq.csv').read_csv()
     i5_cols = ['TubeNo', 'i5']
     i7_cols = ['TubeNo', 'i7']
     final_df = Matcher(sample_i5, itru5, itru7)\
                     .match_all(i5_cols, i7_cols)
-    IO(fpath, 'test_iTru_index.csv').write_csv(final_df)
+    IO(fpath, 'result_iTru_index.csv').write_csv(final_df)
 
 if __name__ == "__main__":
     main()
