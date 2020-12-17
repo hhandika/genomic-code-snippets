@@ -77,7 +77,7 @@ def main():
     final_df = Matcher(sample_i5, itru5, \
                     sample_i7, itru7)\
                     .match_all()
-    IO(fpath, 'res_iTru_index.csv').write_csv(final_df)
+    IO(fpath, 'result_iTru_index.csv').write_csv(final_df)
 
 if __name__ == "__main__":
     main()
