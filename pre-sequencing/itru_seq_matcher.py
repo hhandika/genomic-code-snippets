@@ -1,9 +1,13 @@
 """
 Heru Handika
 16 December 2020
-Match iTru with index sequence
-"""
+Match iTru with index sequence.
 
+You can run this code on VS code.
+Run Below button will show up. Click it 
+to run the code. Otherwise, run it just like 
+any other python script. 
+"""
 # %%
 import os
 import pandas as pd
@@ -22,7 +26,7 @@ class IO:
 
     def read_csv(self):
         """
-        Read csv files.
+        
         """
         csv_file = self._get_path(self.filenames)
         df = pd.read_csv(csv_file)
@@ -75,8 +79,8 @@ def main():
     itru5 = IO(fpath, 'i5Index.csv').read_csv()
     itru7 = IO(fpath, 'i7Index.csv').read_csv()
     final_df = Matcher(sample_i5, itru5, \
-                    sample_i7, itru7)\
-                    .match_all()
+                        sample_i7, itru7)\
+                        .match_all()
     IO(fpath, 'result_iTru_index.csv').write_csv(final_df)
 
 if __name__ == "__main__":
