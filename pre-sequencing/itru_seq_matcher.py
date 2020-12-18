@@ -1,12 +1,7 @@
 """
 Heru Handika
 16 December 2020
-Match iTru with index sequence.
-
-You can run this code on VS code.
-Run Below button will show up. Click it 
-to run the code. Otherwise, run it just like 
-any other python script. 
+Match iTru with index sequence. 
 """
 # %%
 import os
@@ -42,9 +37,6 @@ class IO:
         print(f'File is saved as {path}.') 
 
     def write_csv(self,  df: pd.DataFrame, new_path: str=None) -> None:
-        """
-        Save pandas's dataframe to csv.
-        """
         path = self._get_path(self.filenames)
         self._write_file(df, path)
 
@@ -86,12 +78,12 @@ class Matcher:
 
 def main():
     fpath = 'data'
-    sample_i5 = IO(fpath, 'sample.csv').read_csv()
+    sample = IO(fpath, 'sample.csv').read_csv()
     itru5 = IO(fpath, 'i5seq.csv').read_csv()
     itru7 = IO(fpath, 'i7seq.csv').read_csv()
     i5_cols = ['TubeNo', 'i5']
     i7_cols = ['TubeNo', 'i7']
-    final_df = Matcher(sample_i5, itru5, itru7)\
+    final_df = Matcher(sample, itru5, itru7)\
                     .match_all(i5_cols, i7_cols)
     IO(fpath, 'result_iTru_index.csv').write_csv(final_df)
 
