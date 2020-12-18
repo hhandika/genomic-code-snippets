@@ -8,3 +8,6 @@ Currently, it contains python script to match iTru well index with iTru sequence
 
 ### Quality-Control
 This directory contains multiple bash files to quickly check sequencing read. The 'nt_count_read_gunzip.sh' is the fastest code in my test. It is multithreaded using GNU parallel. You will need to install GNU parallel to use it. 
+
+## The State of the Code
+All the code hre is experimental. In some cases, it can appears in multiple implimentation for doing the same thing. I use them to find the most efficient code for the problem. 
