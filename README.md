@@ -4,7 +4,27 @@ This repo contains random code snippets I wrote to process high-throughput seque
 ## Usage
 
 ### Pre-Sequencing
-Currently, it contains python script to match iTru well index with iTru sequences. It will save time than doing it manually and can prevent copy-pasting mistakes. The easiest way to run the code is to match the file names of your files with the filenames in the sample data provided in the directory of the script. Then, you can run the code like you run any python script.
+Currently, it contains python script to match iTru well IDs with iTru sequences. It will save time than doing it manually and can prevent copy-pasting mistakes. The easiest way to run the code is to replace the contents in the data folder with your data. Make sure to keep the column names and filenames intact, except the primer names is optional. Then, you can run the code like you run any python script. The script requires python >=3.6 and pandas installed in your system.
+
+<b>Running the code</b>
+If you are using conda. First activate your conda environment:
+
+```
+conda activate [conda-env-name]
+```
+
+If you don't have pandas installed:
+
+```
+conda install pandas
+```
+
+Then, run the code:
+
+```
+python itru_seq_matcher.py
+```
+
 
 ### Quality-Control
 This directory contains multiple bash files to quickly check sequencing read. I recommend using the nt_count_read_zcat.sh. The script only work on Linux or MacOS.
