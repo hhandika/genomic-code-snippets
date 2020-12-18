@@ -4,7 +4,7 @@ This repo contains random code snippets I wrote to process high-throughput seque
 ## Usage
 
 ### Pre-Sequencing
-Currently, it contains python script to match iTru well IDs with iTru sequences. It will save time than doing it manually and can prevent copy-pasting mistakes. The easiest way to run the code is to replace the contents in the data folder with your data. Make sure to keep the column names and filenames intact, except the primer names is optional. Then, you can run the code like you run any python script. The script requires python >=3.6 and pandas installed in your system.
+Currently, it contains python script to match iTru well IDs with iTru sequences. It will save time than doing it manually and can prevent copy-pasting mistakes. The easiest way to run the code is to replace the contents in the data folder with your data. Make sure to keep the column names and filenames intact, except the primer name for each i5 and i7 is optional. Then, you can run the code like you run any python script. The script requires python >=3.6 and pandas installed in your system.
 
 <b>Running the code</b>
 
