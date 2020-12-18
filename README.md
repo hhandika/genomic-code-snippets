@@ -1,5 +1,5 @@
 # genomic-code-snippets
-This repo contains random code snippets I wrote to process high-throughput sequencing data. 
+This repo contains random code snippets I wrote to process high-throughput sequencing data. Expect it to grow as I start spending more time analysing my data. 
 
 ## Usage
 
