@@ -28,21 +28,21 @@ python itru_seq_matcher.py
 
 
 ### Quality-Control
-This directory contains multiple bash files to quickly check sequencing read. I recommend using the nt_count_read_zcat.sh. The script only work on Linux or MacOS.
+This directory contains multiple bash files to quickly check sequencing read. I recommend using the nt_count_read_zcat.sh. The script only work on Linux or MacOS. For Windows users, you could use Windows Subsystem for Linux.
 
-Check if you have GNU Parallel installed in your system. This command below should shows the program version. 
+Check if you have GNU Parallel installed in your system. This command below should show the program version. 
 
 ```
 parallel --version
 ```
 
-If you don't have GNU parallel installed, it will show command not found error. Install it using the command below. Choose based on your operating system.
+If you don't have GNU parallel installed, it will show "command not found error" or similar messages. Install it using the command below. Choose based on your operating system.
 
 ```
-# Ubuntu
+# Ubuntu/Debian/WSL Ubuntu/WSL Debian
 sudo apt install parallel
 
-# OpenSuse
+# OpenSuse/WSL OpenSUSE
 sudo zypper in parallel
 
 # Fedora
