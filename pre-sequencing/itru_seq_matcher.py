@@ -18,7 +18,7 @@ class IO:
     def _get_path(self, filenames: str, new_path: str=None) -> str:
         """
         Generate path for processing. 
-        The function concat the folder name with filename.
+        The function concat the folder name with the filename.
         """
         if new_path is not None:
             return new_path + '/' + filenames
@@ -36,7 +36,7 @@ class IO:
         df = df.apply(lambda x: x.str.strip() if x.dtype == 'object' else x)
         return df
     
-    def _write_file(self, df: pd.DataFrame, path: str) -> None:
+    def _write_csv(self, df: pd.DataFrame, path: str) -> None:
         """
         Save to csv and print the filename and location
         on console.
@@ -44,23 +44,23 @@ class IO:
         df.to_csv(path, index=False)
         print(f'File is saved as {path}.') 
 
-    def write_csv(self,  df: pd.DataFrame, new_path: str=None) -> None:
+    def write_file(self,  df: pd.DataFrame, new_path: str=None) -> None:
         """
         Control writing files. It allows users to assign 
         new folder to write the file.
         """
         path = self._get_path(self.filenames)
-        self._write_file(df, path)
+        self._write_csv(df, path)
 
         if new_path is not None:
             try:
                 path = self._get_path(self.filenames, new_path)
-                self._write_file(df, path)
+                self._write_csv(df, path)
             except FileNotFoundError:
                 os.mkdir(new_path)
                 print(f'A new folder is created. File path: {new_path}/')
                 path = self._get_path(self.filenames, new_path)
-                self._write_file(df, path)
+                self._write_csv(df, path)
                  
 
 class Matcher:
@@ -87,9 +87,11 @@ class Matcher:
 
     def match_all(self, i5_cols: List[str], i7_cols: List[str]) -> pd.DataFrame:
         """
-        This function first splits the sample file to each iTru index.
+        This function first splits the sample dataframe to each iTru index.
         Then, match each index with its sequence.
-        Later, combined the two file to generate the final dataframe.
+        Later, combined the two dataframe to generate the final dataframe.
+        The write_file function in the IO class responsible for writing the
+        final dataframe into a csv file.
         """
         sample_i5 = self._split_df(i5_cols)
         sample_i7 = self._split_df(i7_cols)
@@ -106,7 +108,7 @@ def main():
     i7_cols = ['TubeNo', 'i7']
     final_df = Matcher(sample, itru5, itru7)\
                     .match_all(i5_cols, i7_cols)
-    IO(fpath, 'result_iTru_index.csv').write_csv(final_df)
+    IO(fpath, 'result_iTru_index.csv').write_file(final_df)
 
 if __name__ == "__main__":
     main()
