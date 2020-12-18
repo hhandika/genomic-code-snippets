@@ -13,7 +13,7 @@ Check if you have GNU Parallel installed in your system. This command below shou
 
 ```
 parallel --version
-'''
+```
 
 If you don't have GNU parallel installed, it will show command not found error. Install it using the command below. Choose based on your operating system.
 
@@ -29,6 +29,7 @@ sudo dnf in parallel
 
 # On MacOS use homebrew. 
 brew install parallel
+
 ```
 
 You can run the script from the directory of your fastaq.gz files or copy it to your path variable and then call it from your fastaq directories. 
